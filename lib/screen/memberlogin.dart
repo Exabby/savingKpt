@@ -9,10 +9,6 @@ import 'dart:async';
 
 import 'home.dart';
 
-class ProfileInfo {
-  static var name;
-}
-
 class MemberLogin extends StatefulWidget {
   const MemberLogin({Key? key}) : super(key: key);
 
