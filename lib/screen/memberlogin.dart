@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+
 import 'dart:async';
 
 import 'home.dart';
@@ -39,14 +40,13 @@ class _MemberLoginState extends State<MemberLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("เข้าสู่ระบบ"),
+        title: const Text("เข้าสู่ระบบ"),
       ),
       body: Form(
         key: _formKey,
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.center,
           // ignore: prefer_const_literals_to_create_immutablesa
-          // ignore: prefer_const_literals_to_create_immutables
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
