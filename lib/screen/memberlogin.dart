@@ -45,14 +45,12 @@ class _MemberLoginState extends State<MemberLogin> {
       body: Form(
         key: _formKey,
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutablesa
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
                 controller: _ctrlUsername,
-                validator: (value),
+                validator: (value) {},
                 decoration: InputDecoration(
                     fillColor: Colors.white70,
                     filled: true,
