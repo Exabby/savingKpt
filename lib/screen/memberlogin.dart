@@ -9,6 +9,10 @@ import 'dart:async';
 
 import 'home.dart';
 
+class ProfileInfo {
+  static var name;
+}
+
 class MemberLogin extends StatefulWidget {
   const MemberLogin({Key? key}) : super(key: key);
 
@@ -30,7 +34,7 @@ class _MemberLoginState extends State<MemberLogin> {
         "password": _ctrlPassword.text,
       });
       var data = json.decode(response.body);
-      print(data);
+
       if (data['status'] == 'Okay') {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => Homekpts()));
