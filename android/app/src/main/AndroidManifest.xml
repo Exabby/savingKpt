@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.playground">
+    package="com.example.kptsave">
    <application
-        android:label="playground"
+        android:label="kptsave"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

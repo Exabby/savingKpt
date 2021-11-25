@@ -10,8 +10,8 @@ class Homekpts extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("ผู้ใช้"),
-        actions: <Widget>[],
       ),
+      body: Container(),
     );
   }
 }

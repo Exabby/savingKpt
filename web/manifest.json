@@ -1,6 +1,6 @@
 {
-    "name": "playground",
-    "short_name": "playground",
+    "name": "kptsave",
+    "short_name": "kptsave",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
