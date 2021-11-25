@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -28,7 +30,7 @@ class _MemberLoginState extends State<MemberLogin> {
         "password": _ctrlPassword.text,
       });
       var data = json.decode(response.body);
-      //print(data);
+      print(data);
       if (data['status'] == 'Okey') {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => Homekpts()));
