@@ -1,16 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
 
 import 'package:http/http.dart' as http;
-import 'package:kptsave/screen/home.dart';
-import 'dart:io';
+
 import 'dart:async';
-=======
+
 // ignore: unused_import
 import 'package:flutter/scheduler.dart';
->>>>>>> ba39eb91a53c836fde808e6d821c5cb3a7f739f0
+
+import 'home.dart';
 
 class Loginkpts extends StatelessWidget {
   TextEditingController _ctrlUsername = TextEditingController();
