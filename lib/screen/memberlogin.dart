@@ -31,7 +31,7 @@ class _MemberLoginState extends State<MemberLogin> {
       });
       var data = json.decode(response.body);
       print(data);
-      if (data['status'] == 'Okey') {
+      if (data['status'] == 'Okay') {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => Homekpts()));
       }
