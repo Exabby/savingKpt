@@ -15,7 +15,7 @@ class Loginkpts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("เข้าสู่ระบบ"),
+        title: Text("เข้าสู่ระบบนาจา"),
       ),
       body: Form(
         child: Column(
