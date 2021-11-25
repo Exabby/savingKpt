@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:flutter/scheduler.dart';
-import 'package:form_field_validator/form_field_validator.dart';
-import 'home.dart';
 
 class Loginkpts extends StatelessWidget {
   TextEditingController _ctrlUsername = TextEditingController();
