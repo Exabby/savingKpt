@@ -24,10 +24,13 @@ class Homekpts extends StatelessWidget {
                   height: 500,
                   color: Colors.white,
                   child: Container(
-                    child: Text(
-                      args.title + args.name + ' ' + args.lname,
-                      style: TextStyle(
-                        color: Colors.blue,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(
+                        args.title + args.name + ' ' + args.lname,
+                        style: TextStyle(
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                     decoration: BoxDecoration(
