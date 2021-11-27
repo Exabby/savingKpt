@@ -10,10 +10,17 @@ import 'dart:async';
 import 'home.dart';
 
 class ScreenArguments {
+  final String title;
   final String name;
-  // final String message;
+  final String lname;
+  final String gender;
 
-  ScreenArguments(this.name);
+  ScreenArguments(
+    this.title,
+    this.name,
+    this.lname,
+    this.gender,
+  );
 }
 
 class MemberLogin extends StatefulWidget {
@@ -30,6 +37,11 @@ class _MemberLoginState extends State<MemberLogin> {
   final _formKey = GlobalKey<FormState>();
 
   Future doLogin() async {
+    MaterialApp(
+      routes: {
+        Homekpts.routeName: (context) => const Homekpts(),
+      },
+    );
     var _url = Uri.parse('https://save.kpt.ac.th/loginGetApi.php');
     if (_formKey.currentState!.validate()) {
       var response = await http.post(_url, body: {
@@ -40,7 +52,8 @@ class _MemberLoginState extends State<MemberLogin> {
 
       if (data['status'] == 'Okay') {
         Navigator.pushNamed(context, Homekpts.routeName,
-            arguments: ScreenArguments(data['name']));
+            arguments: ScreenArguments(
+                data['title'], data['name'], data['lname'], data['gender']));
       }
     }
   }

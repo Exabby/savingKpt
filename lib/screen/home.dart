@@ -24,7 +24,12 @@ class Homekpts extends StatelessWidget {
                   height: 500,
                   color: Colors.white,
                   child: Container(
-                    child: Text(args.name),
+                    child: Text(
+                      args.title + args.name + ' ' + args.lname,
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
                     decoration: BoxDecoration(
                         color: Colors.grey[850],
                         boxShadow: [
@@ -36,23 +41,3 @@ class Homekpts extends StatelessWidget {
             ]));
   }
 }
-
-
-
-        // body: Align(
-        //     alignment: Alignment.topCenter,
-        //     child: Padding(
-        //       padding: const EdgeInsets.only(top: 32.0),
-        //       child: Container(
-        //         width: 370,
-        //         height: 500,
-        //         color: Colors.white,
-        //         child: Container(
-        //           decoration: BoxDecoration(
-        //               color: Colors.grey[850],
-        //               boxShadow: [
-        //                 BoxShadow(color: Colors.blue, offset: Offset(15, 15))
-        //               ]),
-        //         ),
-        //       ),
-        //     )));
