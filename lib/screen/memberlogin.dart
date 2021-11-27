@@ -98,6 +98,16 @@ class _MemberLoginState extends State<MemberLogin> {
                           onPressed: () => doLogin(), child: Text('Login'))),
                 ],
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () => doLogin(), child: Text('Sign Up'))),
+                ],
+              ),
             )
           ],
         ),

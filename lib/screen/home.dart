@@ -28,9 +28,7 @@ class Homekpts extends StatelessWidget {
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
                         args.title + args.name + ' ' + args.lname,
-                        style: TextStyle(
-                          color: Colors.blue,
-                        ),
+                        style: TextStyle(color: Colors.white, fontSize: 30),
                       ),
                     ),
                     decoration: BoxDecoration(
