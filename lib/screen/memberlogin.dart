@@ -9,6 +9,13 @@ import 'dart:async';
 
 import 'home.dart';
 
+class ScreenArguments {
+  final String name;
+  // final String message;
+
+  ScreenArguments(this.name);
+}
+
 class MemberLogin extends StatefulWidget {
   const MemberLogin({Key? key}) : super(key: key);
 
@@ -32,8 +39,8 @@ class _MemberLoginState extends State<MemberLogin> {
       var data = json.decode(response.body);
 
       if (data['status'] == 'Okay') {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Homekpts()));
+        Navigator.pushNamed(context, Homekpts.routeName,
+            arguments: ScreenArguments(data['name']));
       }
     }
   }
