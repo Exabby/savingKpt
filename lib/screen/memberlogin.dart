@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:io';
 import 'dart:async';
 
-import 'home.dart';
+import 'package:kptsave/screen/home.dart';
 
 class MemberLogin extends StatefulWidget {
   const MemberLogin({Key? key}) : super(key: key);
@@ -15,8 +15,8 @@ class MemberLogin extends StatefulWidget {
 }
 
 class _MemberLoginState extends State<MemberLogin> {
-  TextEditingController _ctrlUsername = TextEditingController();
-  TextEditingController _ctrlPassword = TextEditingController();
+  final TextEditingController _ctrlUsername = TextEditingController();
+  final TextEditingController _ctrlPassword = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -28,8 +28,8 @@ class _MemberLoginState extends State<MemberLogin> {
         "password": _ctrlPassword.text,
       });
       var data = json.decode(response.body);
-      //print(data);
-      if (data['status'] == 'Okey') {
+      print(data);
+      if (data['status'] == 'Okay') {
         Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => Homekpts()));
       }
@@ -43,50 +43,60 @@ class _MemberLoginState extends State<MemberLogin> {
         title: Text("เข้าสู่ระบบ"),
       ),
       body: Form(
-        key: _formKey,
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          // ignore: prefer_const_literals_to_create_immutablesa
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: _ctrlUsername,
-                validator: (value),
-                decoration: InputDecoration(
-                    fillColor: Colors.white70,
-                    filled: true,
-                    labelText: 'ชื่อผู้เข้าใช้',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
+          key: _formKey,
+          child: Column(
+            //mainAxisAlignment: MainAxisAlignment.center,
+            // ignore: prefer_const_literals_to_create_immutablesa
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: _ctrlUsername,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Enter Username';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      fillColor: Colors.white70,
+                      filled: true,
+                      labelText: 'ชื่อผู้เข้าใช้',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0))),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: _ctrlPassword,
-                obscureText: true,
-                decoration: InputDecoration(
-                    fillColor: Colors.white70,
-                    filled: true,
-                    labelText: 'รหัสผ่าน',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: TextFormField(
+                  controller: _ctrlPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please Enter Password';
+                    }
+                    return null;
+                  },
+                  obscureText: true,
+                  decoration: InputDecoration(
+                      fillColor: Colors.white70,
+                      filled: true,
+                      labelText: 'รหัสผ่าน',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(5.0))),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: ElevatedButton(
-                          onPressed: () => doLogin(), child: Text('Login'))),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                        child: ElevatedButton(
+                            onPressed: () => doLogin(), child: Text('Login'))),
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
-      ),
+            ],
+          )),
     );
   }
 }
