@@ -11,34 +11,18 @@ class Homekpts extends StatelessWidget {
     final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text("ผู้ใช้"),
+      appBar: AppBar(
+        title: Text("ผู้ใช้"),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/profile_image.jpg"),
+            fit: BoxFit.cover,
+          ),
         ),
-        body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  width: 370,
-                  height: 500,
-                  color: Colors.white,
-                  child: Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Text(
-                        args.title + args.name + ' ' + args.lname,
-                        style: TextStyle(color: Colors.white, fontSize: 30),
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                        color: Colors.grey[850],
-                        boxShadow: [
-                          BoxShadow(color: Colors.blue, offset: Offset(15, 15))
-                        ]),
-                  ),
-                ),
-              ),
-            ]));
+        child: null /* add child content here */,
+      ),
+    );
   }
 }
