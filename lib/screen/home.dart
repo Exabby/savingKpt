@@ -12,16 +12,27 @@ class Homekpts extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("ผู้ใช้"),
+        title: Text("หน้าหลัก"),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/profile_image.jpg"),
-            fit: BoxFit.cover,
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Padding(
+              padding: const EdgeInsets.all(120.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: NetworkImage(
+                          'https://save.kpt.ac.th/' + args.profilePic),
+                      fit: BoxFit.scaleDown),
+                ),
+              ),
+            ),
           ),
-        ),
-        child: null /* add child content here */,
+        ],
       ),
     );
   }

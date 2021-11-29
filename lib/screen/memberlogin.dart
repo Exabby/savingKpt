@@ -9,12 +9,14 @@ class ScreenArguments {
   final String name;
   final String lname;
   final String gender;
+  final String profilePic;
 
   ScreenArguments(
     this.title,
     this.name,
     this.lname,
     this.gender,
+    this.profilePic,
   );
 }
 
@@ -47,8 +49,8 @@ class _MemberLoginState extends State<MemberLogin> {
 
       if (data['status'] == 'Okay') {
         Navigator.pushNamed(context, Homekpts.routeName,
-            arguments: ScreenArguments(
-                data['title'], data['name'], data['lname'], data['gender']));
+            arguments: ScreenArguments(data['title'], data['name'],
+                data['lname'], data['gender'], data['profilePic']));
       }
     }
   }
@@ -67,7 +69,12 @@ class _MemberLoginState extends State<MemberLogin> {
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
                 controller: _ctrlUsername,
-                validator: (value) {},
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please Enter Username';
+                  }
+                  return null;
+                },
                 decoration: InputDecoration(
                     fillColor: Colors.white70,
                     filled: true,
@@ -80,6 +87,12 @@ class _MemberLoginState extends State<MemberLogin> {
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
                 controller: _ctrlPassword,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please Enter Password';
+                  }
+                  return null;
+                },
                 obscureText: true,
                 decoration: InputDecoration(
                     fillColor: Colors.white70,
