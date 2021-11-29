@@ -1,11 +1,22 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'dart:io';
 import 'dart:async';
+import 'home.dart';
 
-import 'package:kptsave/screen/home.dart';
+class ScreenArguments {
+  final String title;
+  final String name;
+  final String lname;
+  final String gender;
+
+  ScreenArguments(
+    this.title,
+    this.name,
+    this.lname,
+    this.gender,
+  );
+}
 
 class MemberLogin extends StatefulWidget {
   const MemberLogin({Key? key}) : super(key: key);
@@ -15,12 +26,17 @@ class MemberLogin extends StatefulWidget {
 }
 
 class _MemberLoginState extends State<MemberLogin> {
-  final TextEditingController _ctrlUsername = TextEditingController();
-  final TextEditingController _ctrlPassword = TextEditingController();
+  TextEditingController _ctrlUsername = TextEditingController();
+  TextEditingController _ctrlPassword = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
   Future doLogin() async {
+    MaterialApp(
+      routes: {
+        Homekpts.routeName: (context) => const Homekpts(),
+      },
+    );
     var _url = Uri.parse('https://save.kpt.ac.th/loginGetApi.php');
     if (_formKey.currentState!.validate()) {
       var response = await http.post(_url, body: {
@@ -28,10 +44,11 @@ class _MemberLoginState extends State<MemberLogin> {
         "password": _ctrlPassword.text,
       });
       var data = json.decode(response.body);
-      print(data);
+
       if (data['status'] == 'Okay') {
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => Homekpts()));
+        Navigator.pushNamed(context, Homekpts.routeName,
+            arguments: ScreenArguments(
+                data['title'], data['name'], data['lname'], data['gender']));
       }
     }
   }
@@ -40,63 +57,61 @@ class _MemberLoginState extends State<MemberLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("เข้าสู่ระบบ"),
+        title: const Text("เข้าสู่ระบบ"),
       ),
       body: Form(
-          key: _formKey,
-          child: Column(
-            //mainAxisAlignment: MainAxisAlignment.center,
-            // ignore: prefer_const_literals_to_create_immutablesa
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextFormField(
-                  controller: _ctrlUsername,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Username';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                      fillColor: Colors.white70,
-                      filled: true,
-                      labelText: 'ชื่อผู้เข้าใช้',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
-                ),
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                controller: _ctrlUsername,
+                validator: (value) {},
+                decoration: InputDecoration(
+                    fillColor: Colors.white70,
+                    filled: true,
+                    labelText: 'ชื่อผู้เข้าใช้',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0))),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: TextFormField(
-                  controller: _ctrlPassword,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please Enter Password';
-                    }
-                    return null;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      fillColor: Colors.white70,
-                      filled: true,
-                      labelText: 'รหัสผ่าน',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                controller: _ctrlPassword,
+                obscureText: true,
+                decoration: InputDecoration(
+                    fillColor: Colors.white70,
+                    filled: true,
+                    labelText: 'รหัสผ่าน',
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(5.0))),
               ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: ElevatedButton(
-                            onPressed: () => doLogin(), child: Text('Login'))),
-                  ],
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () => doLogin(), child: Text('Login'))),
+                ],
               ),
-            ],
-          )),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () => doLogin(), child: Text('Sign Up'))),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
