@@ -12,19 +12,25 @@ class _settingskptState extends State<settingskpt> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("settings"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Row(
-          children: <Widget>[
-            Expanded(
-                child: ElevatedButton(
-                    onPressed: () => doLogin(), child: Text('Login'))),
-          ],
+        appBar: AppBar(
+          title: const Text("settings"),
         ),
-      ),
-    );
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: <Widget>[
+                  Expanded(
+                      child: ElevatedButton(
+                          onPressed: () => doLogin(), child: Text('Login'))),
+                ],
+              ),
+            ), //your elements here
+          ],
+        ));
   }
 }
