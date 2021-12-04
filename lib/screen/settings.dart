@@ -9,6 +9,7 @@ class settingskpt extends StatefulWidget {
 }
 
 class _settingskptState extends State<settingskpt> {
+  // const SecondRoute({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,9 +25,9 @@ class _settingskptState extends State<settingskpt> {
               padding: const EdgeInsets.all(10.0),
               child: Row(
                 children: <Widget>[
-                  Expanded(
-                      child: ElevatedButton(
-                          onPressed: () => doLogin(), child: Text('Login'))),
+                  // Expanded(
+                  // child: ElevatedButton(
+                  // onPressed: (), child: Text('Login'))),
                 ],
               ),
             ), //your elements here

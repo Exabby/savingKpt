@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'memberlogin.dart';
+import 'settings.dart';
 
 class Homekpts extends StatelessWidget {
   const Homekpts({Key? key}) : super(key: key);
@@ -12,7 +13,20 @@ class Homekpts extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("หน้าหลัก"),
+        title: const Text("หน้าหลัก"),
+        automaticallyImplyLeading: false,
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => settingskpt()));
+            },
+          )
+        ],
       ),
       body: Stack(children: <Widget>[
         Container(
@@ -40,8 +54,9 @@ class Homekpts extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0, top: 15),
+                padding: const EdgeInsets.only(left: 8.0, top: 20),
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       args.title + args.name + " " + args.lname,
