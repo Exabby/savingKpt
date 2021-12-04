@@ -10,14 +10,10 @@ class ScreenArguments {
   final String lname;
   final String gender;
   final String profilePic;
+  final String id;
 
   ScreenArguments(
-    this.title,
-    this.name,
-    this.lname,
-    this.gender,
-    this.profilePic,
-  );
+      this.title, this.name, this.lname, this.gender, this.profilePic, this.id);
 }
 
 class MemberLogin extends StatefulWidget {
@@ -50,7 +46,7 @@ class _MemberLoginState extends State<MemberLogin> {
       if (data['status'] == 'Okay') {
         Navigator.pushNamed(context, Homekpts.routeName,
             arguments: ScreenArguments(data['title'], data['name'],
-                data['lname'], data['gender'], data['profilePic']));
+                data['lname'], data['gender'], data['profilePic'], data['id']));
       }
     }
   }
