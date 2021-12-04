@@ -14,7 +14,10 @@ class Homekpts extends StatelessWidget {
       appBar: AppBar(
         title: Text("หน้าหลัก"),
       ),
+<<<<<<< HEAD
 <<<<<<< Updated upstream
+=======
+>>>>>>> a494d47 (แก้รูปหน้า Home ใส่ Row,Column)
       body: Stack(children: <Widget>[
         Container(
           decoration: const BoxDecoration(
@@ -66,6 +69,7 @@ class Homekpts extends StatelessWidget {
           ),
         )
       ]),
+<<<<<<< HEAD
 =======
       body: Column(
         children: [
@@ -84,6 +88,8 @@ class Homekpts extends StatelessWidget {
         ],
       ),
 >>>>>>> Stashed changes
+=======
+>>>>>>> a494d47 (แก้รูปหน้า Home ใส่ Row,Column)
     );
   }
 }
