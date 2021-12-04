@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/memberlogin.dart';
+import 'package:kptsave/settings.dart';
 import 'screen/home.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: MemberLogin(),
+      home: settingskpt(),
       routes: {
         Homekpts.routeName: (context) => const Homekpts(),
       },

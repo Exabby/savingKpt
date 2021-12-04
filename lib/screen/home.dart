@@ -14,6 +14,7 @@ class Homekpts extends StatelessWidget {
       appBar: AppBar(
         title: Text("หน้าหลัก"),
       ),
+<<<<<<< Updated upstream
       body: Stack(children: <Widget>[
         Container(
           decoration: const BoxDecoration(
@@ -65,6 +66,24 @@ class Homekpts extends StatelessWidget {
           ),
         )
       ]),
+=======
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(120.0),
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: NetworkImage(
+                        'https://save.kpt.ac.th/' + args.profilePic),
+                    fit: BoxFit.scaleDown),
+              ),
+            ),
+          ),
+        ],
+      ),
+>>>>>>> Stashed changes
     );
   }
 }

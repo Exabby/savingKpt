@@ -12,6 +12,7 @@ class _settingskptState extends State<settingskpt> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< Updated upstream
       appBar: AppBar(
         title: const Text("settings"),
       ),
@@ -25,6 +26,15 @@ class _settingskptState extends State<settingskpt> {
           ],
         ),
       ),
+=======
+        appBar: AppBar(
+      title: const Text("settings"),
+    ),
+    body: MaterialButton(onPressed: (){}
+    child: Text("เกี่ยวกับ" style: TextStyle(fontSize:20, color: Color.black,
+    ),
+    ),),
+>>>>>>> Stashed changes
     );
   }
 }
