@@ -4,16 +4,17 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'home.dart';
 
-class ScreenArguments {
+class ScreenArgumentsHome {
   final String title;
   final String name;
   final String lname;
   final String gender;
   final String profilePic;
+  final String nationalID;
   final String id;
 
-  ScreenArguments(
-      this.title, this.name, this.lname, this.gender, this.profilePic, this.id);
+  ScreenArgumentsHome(this.title, this.name, this.lname, this.gender,
+      this.profilePic, this.nationalID, this.id);
 }
 
 class MemberLogin extends StatefulWidget {
@@ -35,6 +36,7 @@ class _MemberLoginState extends State<MemberLogin> {
         Homekpts.routeName: (context) => const Homekpts(),
       },
     );
+
     var _url = Uri.parse('https://save.kpt.ac.th/loginGetApi.php');
     if (_formKey.currentState!.validate()) {
       var response = await http.post(_url, body: {
@@ -45,8 +47,14 @@ class _MemberLoginState extends State<MemberLogin> {
 
       if (data['status'] == 'Okay') {
         Navigator.pushNamed(context, Homekpts.routeName,
-            arguments: ScreenArguments(data['title'], data['name'],
-                data['lname'], data['gender'], data['profilePic'], data['id']));
+            arguments: ScreenArgumentsHome(
+                data['title'],
+                data['name'],
+                data['lname'],
+                data['gender'],
+                data['profilePic'],
+                data['nationalID'],
+                data['id']));
       }
     }
   }

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'memberlogin.dart';
 import 'settings.dart';
+import 'savingInfo.dart';
+
+class ScreenArgumentsSaving {
+  final String id;
+
+  ScreenArgumentsSaving(this.id);
+}
 
 class Homekpts extends StatelessWidget {
   const Homekpts({Key? key}) : super(key: key);
 
-  static const routeName = '/extractArguments';
+  static const routeName = '/homekpts';
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ScreenArgumentsHome;
 
+    final String id = args.id;
     return Scaffold(
       appBar: AppBar(
         title: const Text("หน้าหลัก"),
@@ -69,7 +78,7 @@ class Homekpts extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 13.0),
                           child: Text(
-                            args.id,
+                            args.nationalID,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
@@ -84,9 +93,16 @@ class Homekpts extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 50, left: 10),
                 child: Row(children: [
                   GestureDetector(
-                    onTap: null,
+                    onTap: () {
+                      Navigator.pushNamed(context, SavingInfo.routeName,
+                          arguments: ScreenArgumentsSaving(
+                            id,
+                          ));
+                    },
                     child: Image.asset(
-                      'assets/images/ข้อมูลออมทรัพย์.png',
+                      'assets/images/saving_icon.jpg',
+                      width: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ),
                   ),
