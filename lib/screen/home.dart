@@ -60,7 +60,8 @@ class Homekpts extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                           image: NetworkImage(
-                              'https://save.kpt.ac.th/' + args.profilePic),
+                              'https://save.kpt.ac.th/assets/profile/' +
+                                  args.profilePic),
                           fit: BoxFit.fill),
                     ),
                   ),
