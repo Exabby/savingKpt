@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'memberlogin.dart';
 import 'settings.dart';
 import 'savingInfo.dart';
+import 'package:http/http.dart' as http;
 
 class ScreenArgumentsSaving {
   final String id;
@@ -71,7 +74,7 @@ class Homekpts extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          args.title + args.name + " " + args.lname,
+                          args.title + args.name + " " + args.lname,  
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
