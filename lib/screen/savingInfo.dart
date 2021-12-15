@@ -15,12 +15,14 @@ class SavingInfo extends StatelessWidget {
   static const routeName = '/savinginfo';
 
   Future<List<SavingInfoModel>> getSavingInfoApi(id) async {
-    var _url = Uri.parse('https://save.kpt.ac.th/savingGetApi.php');
+    var _url = Uri.parse('https://save.kpt.ac.th/savingInfoGetApi.php');
     var response = await http.post(_url, body: {
       "id": id,
     });
+
     var data = json.decode(response.body);
     var members = <SavingInfoModel>[];
+    print(data);
     for (var x in data) {
       members.add(SavingInfoModel.fromJson(x));
     }
@@ -48,7 +50,12 @@ class SavingInfo extends StatelessWidget {
                   itemCount: items.length,
                   itemBuilder: (BuildContext context, int index) {
                     SavingInfoModel myModel = items[index];
-                    return ListTile(title: Text(myModel.sDate.toString()));
+
+                    return Column(
+                      children: [
+                        ListTile(title: Text(myModel.sAmount)),
+                      ],
+                    );
                   },
                 );
               } else {
