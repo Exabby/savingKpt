@@ -22,7 +22,7 @@ class SavingInfo extends StatelessWidget {
 
     var data = json.decode(response.body);
     var members = <SavingInfoModel>[];
-    print(data);
+
     for (var x in data) {
       members.add(SavingInfoModel.fromJson(x));
     }
@@ -51,9 +51,34 @@ class SavingInfo extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     SavingInfoModel myModel = items[index];
 
-                    return Column(
+                    return Row(
                       children: [
-                        ListTile(title: Text(myModel.sAmount)),
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(
+                                title: Text(myModel.sAmount),
+                              ),
+                              Divider(thickness: 1, color: Colors.black),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(title: Text(myModel.sDate)),
+                              Divider(thickness: 1, color: Colors.black),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: Column(
+                            children: <Widget>[
+                              ListTile(title: Text(myModel.sround)),
+                              Divider(thickness: 1, color: Colors.black),
+                            ],
+                          ),
+                        ),
                       ],
                     );
                   },
