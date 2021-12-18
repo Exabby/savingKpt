@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:kptsave/screen/editPhone.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/ifmt.dart';
 import 'package:kptsave/screen/memberlogin.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         settingskpt.routeName: (context) => const settingskpt(),
         informationkpt.routeName: (context) => const informationkpt(),
         passwordkpt.routeName: (context) => const passwordkpt(),
+        editPhone.routeName: (context) => const editPhone(),
       },
     );
   }

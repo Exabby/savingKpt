@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/settings.dart';
-import 'home.dart';
+import 'editPhone.dart';
 
 class ScreenArgumentsEditPass {
   final String password;
@@ -10,6 +10,12 @@ class ScreenArgumentsEditPass {
   final String address;
   ScreenArgumentsEditPass(
       this.password, this.nationalId, this.phone, this.address);
+}
+
+class ScreenArgumentsEditPhone {
+  final String phone;
+  final String nationalId;
+  ScreenArgumentsEditPhone(this.phone, this.nationalId);
 }
 
 class informationkpt extends StatefulWidget {
@@ -58,6 +64,11 @@ class _infomationkptState extends State<informationkpt> {
                 side: BorderSide(color: Colors.black)),
           ),
           ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, editPhone.routeName,
+                  arguments:
+                      ScreenArgumentsEditPhone(args.phone, args.nationalId));
+            },
             title: Text('เบอร์โทรศัพท์'),
             subtitle: Text(args.phone),
             shape: RoundedRectangleBorder(
