@@ -37,7 +37,7 @@ class SavingInfoModel {
         sId: json["sId"],
         syear: json["syear"],
         sround: json["sround"],
-        sDate: json["sround"],
+        sDate: json["sDate"],
         sAmount: json["sAmount"],
         sStatus: json["sStatus"],
         memId: json["memID"],

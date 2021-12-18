@@ -50,14 +50,16 @@ class SavingInfo extends StatelessWidget {
                   itemCount: items.length,
                   itemBuilder: (BuildContext context, int index) {
                     SavingInfoModel myModel = items[index];
-
+                    final amount = myModel.sAmount.replaceAllMapped(
+                        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                        (Match m) => '${m[1]},');
                     return Row(
                       children: [
                         Expanded(
                           child: Column(
                             children: <Widget>[
                               ListTile(
-                                title: Text(myModel.sAmount),
+                                title: Text(amount),
                               ),
                               Divider(thickness: 1, color: Colors.black),
                             ],

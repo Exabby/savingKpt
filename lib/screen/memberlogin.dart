@@ -10,12 +10,12 @@ class ScreenArgumentsHome {
   final String lname;
   final String gender;
   final String profilePic;
-  final String nationalID;
+  final String nationalId;
   final String id;
   final String password;
 
   ScreenArgumentsHome(this.title, this.name, this.lname, this.gender,
-      this.profilePic, this.nationalID, this.id, this.password);
+      this.profilePic, this.nationalId, this.id, this.password);
 }
 
 class MemberLogin extends StatefulWidget {

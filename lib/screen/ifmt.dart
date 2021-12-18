@@ -5,8 +5,8 @@ import 'home.dart';
 
 class ScreenArgumentsEditPass {
   final String password;
-  final String id;
-  ScreenArgumentsEditPass(this.password, this.id);
+  final String nationalId;
+  ScreenArgumentsEditPass(this.password, this.nationalId);
 }
 
 class informationkpt extends StatefulWidget {
@@ -45,7 +45,8 @@ class _infomationkptState extends State<informationkpt> {
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, passwordkpt.routeName,
-                  arguments: ScreenArgumentsEditPass(args.password, args.id));
+                  arguments:
+                      ScreenArgumentsEditPass(args.password, args.nationalId));
             },
             title: Text('รหัสผ่าน'),
             subtitle: Text('xxxxxxxxxxx'),

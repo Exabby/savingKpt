@@ -8,8 +8,8 @@ import 'package:http/http.dart' as http;
 
 class ScreenArgumentsSetting {
   final String password;
-  final String id;
-  ScreenArgumentsSetting(this.password, this.id);
+  final String nationalId;
+  ScreenArgumentsSetting(this.password, this.nationalId);
 }
 
 class ScreenArgumentsSaving {
@@ -40,7 +40,8 @@ class Homekpts extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pushNamed(context, "/settings",
-                  arguments: ScreenArgumentsSetting(args.password, args.id));
+                  arguments:
+                      ScreenArgumentsSetting(args.password, args.nationalId));
             },
           )
         ],
@@ -87,7 +88,7 @@ class Homekpts extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 13.0),
                           child: Text(
-                            args.nationalID,
+                            args.nationalId,
                             overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 18),
