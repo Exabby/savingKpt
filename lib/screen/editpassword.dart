@@ -77,6 +77,12 @@ class _passwordkptState extends State<passwordkpt> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: OldPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       fillColor: Colors.white70,
                       filled: true,
@@ -89,6 +95,12 @@ class _passwordkptState extends State<passwordkpt> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: NewPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       fillColor: Colors.white70,
                       filled: true,
@@ -101,6 +113,12 @@ class _passwordkptState extends State<passwordkpt> {
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: ConfirmPassword,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                    }
+                    return null;
+                  },
                   decoration: InputDecoration(
                       fillColor: Colors.white70,
                       filled: true,
