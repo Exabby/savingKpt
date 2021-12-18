@@ -12,9 +12,10 @@ class ScreenArgumentsHome {
   final String profilePic;
   final String nationalID;
   final String id;
+  final String password;
 
   ScreenArgumentsHome(this.title, this.name, this.lname, this.gender,
-      this.profilePic, this.nationalID, this.id);
+      this.profilePic, this.nationalID, this.id, this.password);
 }
 
 class MemberLogin extends StatefulWidget {
@@ -54,7 +55,8 @@ class _MemberLoginState extends State<MemberLogin> {
                 data['gender'],
                 data['profilePic'],
                 data['nationalID'],
-                data['id']));
+                data['id'],
+                data['password']));
       }
     }
   }

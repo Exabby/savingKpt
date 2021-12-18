@@ -6,6 +6,12 @@ import 'settings.dart';
 import 'savingInfo.dart';
 import 'package:http/http.dart' as http;
 
+class ScreenArgumentsSetting {
+  final String password;
+  final String id;
+  ScreenArgumentsSetting(this.password, this.id);
+}
+
 class ScreenArgumentsSaving {
   final String id;
 
@@ -22,7 +28,6 @@ class Homekpts extends StatelessWidget {
     final args =
         ModalRoute.of(context)!.settings.arguments as ScreenArgumentsHome;
 
-    final String id = args.id;
     return Scaffold(
       appBar: AppBar(
         title: const Text("หน้าหลัก"),
@@ -34,8 +39,8 @@ class Homekpts extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => settingskpt()));
+              Navigator.pushNamed(context, "/settings",
+                  arguments: ScreenArgumentsSetting(args.password, args.id));
             },
           )
         ],
@@ -74,7 +79,7 @@ class Homekpts extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          args.title + args.name + " " + args.lname,  
+                          args.title + args.name + " " + args.lname,
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
@@ -100,7 +105,7 @@ class Homekpts extends StatelessWidget {
                     onTap: () {
                       Navigator.pushNamed(context, SavingInfo.routeName,
                           arguments: ScreenArgumentsSaving(
-                            id,
+                            args.id,
                           ));
                     },
                     child: Image.asset(

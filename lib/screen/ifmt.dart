@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/editpassword.dart';
+import 'package:kptsave/screen/settings.dart';
+import 'home.dart';
+
+class ScreenArgumentsEditPass {
+  final String password;
+  final String id;
+  ScreenArgumentsEditPass(this.password, this.id);
+}
 
 class informationkpt extends StatefulWidget {
   const informationkpt({Key? key}) : super(key: key);
-
+  static const routeName = '/infomation';
   @override
   _infomationkptState createState() => _infomationkptState();
 }
@@ -11,6 +19,9 @@ class informationkpt extends StatefulWidget {
 class _infomationkptState extends State<informationkpt> {
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ScreenArgumentsInfo;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('ข้อมูลส่วนตัว'),
@@ -33,9 +44,8 @@ class _infomationkptState extends State<informationkpt> {
           ),
           ListTile(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (contrxt) {
-                return passwordkpt();
-              }));
+              Navigator.pushNamed(context, passwordkpt.routeName,
+                  arguments: ScreenArgumentsEditPass(args.password, args.id));
             },
             title: Text('รหัสผ่าน'),
             subtitle: Text('xxxxxxxxxxx'),
