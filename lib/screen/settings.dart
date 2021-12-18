@@ -7,7 +7,11 @@ import 'home.dart';
 class ScreenArgumentsInfo {
   final String password;
   final String nationalId;
-  ScreenArgumentsInfo(this.password, this.nationalId);
+  final String phone;
+  final String address;
+  final String fullname;
+  ScreenArgumentsInfo(
+      this.password, this.nationalId, this.phone, this.address, this.fullname);
 }
 
 class settingskpt extends StatefulWidget {
@@ -43,8 +47,8 @@ class _settingskptState extends State<settingskpt> {
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, informationkpt.routeName,
-                  arguments:
-                      ScreenArgumentsInfo(args.password, args.nationalId));
+                  arguments: ScreenArgumentsInfo(args.password, args.nationalId,
+                      args.phone, args.address, args.fullname));
             },
             leading: Icon(Icons.account_circle_rounded),
             title: Text('ข้อมูลส่วนตัว'),

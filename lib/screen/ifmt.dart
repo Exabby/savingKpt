@@ -6,7 +6,10 @@ import 'home.dart';
 class ScreenArgumentsEditPass {
   final String password;
   final String nationalId;
-  ScreenArgumentsEditPass(this.password, this.nationalId);
+  final String phone;
+  final String address;
+  ScreenArgumentsEditPass(
+      this.password, this.nationalId, this.phone, this.address);
 }
 
 class informationkpt extends StatefulWidget {
@@ -30,14 +33,14 @@ class _infomationkptState extends State<informationkpt> {
         children: [
           ListTile(
             title: Text('ชื่อ-สกุล'),
-            subtitle: Text('ชือออออออออ'),
+            subtitle: Text(args.fullname),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
                 side: BorderSide(color: Colors.black)),
           ),
           ListTile(
             title: Text('ชื่อผู้ใช้งาน'),
-            subtitle: Text('00000000000000'),
+            subtitle: Text(args.nationalId),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
                 side: BorderSide(color: Colors.black)),
@@ -45,25 +48,25 @@ class _infomationkptState extends State<informationkpt> {
           ListTile(
             onTap: () {
               Navigator.pushNamed(context, passwordkpt.routeName,
-                  arguments:
-                      ScreenArgumentsEditPass(args.password, args.nationalId));
+                  arguments: ScreenArgumentsEditPass(args.password,
+                      args.nationalId, args.phone, args.address));
             },
             title: Text('รหัสผ่าน'),
-            subtitle: Text('xxxxxxxxxxx'),
+            subtitle: Text('แก้ใขรหัสผ่าน'),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
                 side: BorderSide(color: Colors.black)),
           ),
           ListTile(
             title: Text('เบอร์โทรศัพท์'),
-            subtitle: Text('xxxxxxxxxxx'),
+            subtitle: Text(args.phone),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
                 side: BorderSide(color: Colors.black)),
           ),
           ListTile(
             title: Text('ที่อยู่'),
-            subtitle: Text('xxxxxxxxxxxxxxxxxxxxxxxxxx'),
+            subtitle: Text(args.address),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(0.0),
                 side: BorderSide(color: Colors.black)),

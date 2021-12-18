@@ -9,7 +9,11 @@ import 'package:http/http.dart' as http;
 class ScreenArgumentsSetting {
   final String password;
   final String nationalId;
-  ScreenArgumentsSetting(this.password, this.nationalId);
+  final String phone;
+  final String address;
+  final String fullname;
+  ScreenArgumentsSetting(
+      this.password, this.nationalId, this.phone, this.address, this.fullname);
 }
 
 class ScreenArgumentsSaving {
@@ -27,7 +31,7 @@ class Homekpts extends StatelessWidget {
   Widget build(BuildContext context) {
     final args =
         ModalRoute.of(context)!.settings.arguments as ScreenArgumentsHome;
-
+    final String fullname = args.name + " " + args.lname;
     return Scaffold(
       appBar: AppBar(
         title: const Text("หน้าหลัก"),
@@ -40,8 +44,8 @@ class Homekpts extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.pushNamed(context, "/settings",
-                  arguments:
-                      ScreenArgumentsSetting(args.password, args.nationalId));
+                  arguments: ScreenArgumentsSetting(args.password,
+                      args.nationalId, args.phone, args.address, fullname));
             },
           )
         ],
