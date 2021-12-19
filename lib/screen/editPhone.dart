@@ -25,6 +25,7 @@ class _editPhoneState extends State<editPhone> {
         "oldPhone": oldPhone,
         "id": id,
       });
+      Navigator.pop(context);
     }
     Fluttertoast.showToast(
         msg: "เปลี่ยนเบอร์โทรสำเร็จ", //adwda
@@ -54,8 +55,8 @@ class _editPhoneState extends State<editPhone> {
                 title: Text('เบอร์โทรปัจจุบัน'),
                 subtitle: Text(args.phone),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(0.0),
-                    side: BorderSide(color: Colors.black)),
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),

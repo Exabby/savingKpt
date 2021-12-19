@@ -56,6 +56,8 @@ class _passwordkptState extends State<passwordkpt> {
           textColor: Colors.white,
           fontSize: 16.0);
     }
+
+    Navigator.pop(context);
   }
 
   static const routeName = '/editpass';
@@ -131,17 +133,16 @@ class _passwordkptState extends State<passwordkpt> {
                 height: 20.0,
               ),
               MaterialButton(
-                height: 58,
-                minWidth: 380,
-                shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(10)),
-                child: Text(
-                  'ยืนยัน',
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-                color: Color(0xFF1A237E),
-                onPressed: () => changePassword(args.nationalId),
-              ),
+                  height: 58,
+                  minWidth: 380,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10)),
+                  child: Text(
+                    'ยืนยัน',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
+                  ),
+                  color: Color(0xFF1A237E),
+                  onPressed: () => changePassword(args.nationalId)),
             ],
           )),
     );

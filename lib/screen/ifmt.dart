@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kptsave/screen/editaddress.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/settings.dart';
 import 'editPhone.dart';
@@ -76,6 +77,14 @@ class _infomationkptState extends State<informationkpt> {
                 side: BorderSide(color: Colors.black)),
           ),
           ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return editaddresskpt();
+                }),
+              );
+            },
             title: Text('ที่อยู่'),
             subtitle: Text(args.address),
             shape: RoundedRectangleBorder(
