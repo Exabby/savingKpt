@@ -18,8 +18,9 @@ class ScreenArgumentsSetting {
 
 class ScreenArgumentsSaving {
   final String id;
+  final String sumAmount;
 
-  ScreenArgumentsSaving(this.id);
+  ScreenArgumentsSaving(this.id, this.sumAmount);
 }
 
 class Homekpts extends StatelessWidget {
@@ -52,12 +53,15 @@ class Homekpts extends StatelessWidget {
       ),
       body: Stack(children: <Widget>[
         Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage("assets/images/profile_image.jpg"),
-              fit: BoxFit.fill,
-            ),
-          ),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromARGB(255, 255, 253, 228),
+              Color.fromARGB(255, 0, 90, 167),
+            ],
+          )),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 10, left: 10),
@@ -103,15 +107,15 @@ class Homekpts extends StatelessWidget {
                   )
                 ],
               ),
+              Divider(endIndent: 10, thickness: 3, color: Colors.black),
               Padding(
                 padding: const EdgeInsets.only(top: 50, left: 10),
                 child: Row(children: [
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, SavingInfo.routeName,
-                          arguments: ScreenArgumentsSaving(
-                            args.id,
-                          ));
+                          arguments:
+                              ScreenArgumentsSaving(args.id, args.sumAmount));
                     },
                     child: Image.asset(
                       'assets/images/saving_icon.jpg',

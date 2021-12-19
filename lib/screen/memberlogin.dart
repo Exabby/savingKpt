@@ -15,6 +15,7 @@ class ScreenArgumentsHome {
   final String password;
   final String phone;
   final String address;
+  final String sumAmount;
 
   ScreenArgumentsHome(
       this.title,
@@ -26,7 +27,8 @@ class ScreenArgumentsHome {
       this.id,
       this.password,
       this.phone,
-      this.address);
+      this.address,
+      this.sumAmount);
 }
 
 class MemberLogin extends StatefulWidget {
@@ -60,17 +62,17 @@ class _MemberLoginState extends State<MemberLogin> {
       if (data['status'] == 'Okay') {
         Navigator.pushNamed(context, Homekpts.routeName,
             arguments: ScreenArgumentsHome(
-              data['title'],
-              data['name'],
-              data['lname'],
-              data['gender'],
-              data['profilePic'],
-              data['nationalID'],
-              data['id'],
-              data['password'],
-              data['phone'],
-              data['address'],
-            ));
+                data['title'],
+                data['name'],
+                data['lname'],
+                data['gender'],
+                data['profilePic'],
+                data['nationalID'],
+                data['id'],
+                data['password'],
+                data['phone'],
+                data['address'],
+                data['sumAmount']));
       }
     }
   }
