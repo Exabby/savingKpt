@@ -1,9 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/editPhone.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/ifmt.dart';
+import 'package:kptsave/screen/loan.dart';
 import 'package:kptsave/screen/memberlogin.dart';
 import 'package:kptsave/screen/settings.dart';
 import 'screen/home.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: MemberLogin(),
+      home: Dividendkpt(),
       routes: {
         Homekpts.routeName: (context) => const Homekpts(),
         SavingInfo.routeName: (context) => const SavingInfo(),
