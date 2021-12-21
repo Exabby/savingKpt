@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/loan.dart';
@@ -126,11 +127,22 @@ class Homekpts extends StatelessWidget {
                           arguments:
                               ScreenArgumentsSaving(args.id, args.sumAmount));
                     },
-                    child: Image.asset(
-                      'assets/images/savingNew.png',
-                      width: 100,
-                      height: 100,
-                      fit: BoxFit.cover,
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          'assets/images/savingNew.png',
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                        Text(
+                          'ทุนเรือนหุ้น',
+                          style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black87,
+                              fontWeight: FontWeight.bold),
+                        )
+                      ],
                     ),
                   ),
                   Padding(
@@ -140,9 +152,20 @@ class Homekpts extends StatelessWidget {
                         Navigator.pushNamed(context, loankpts.routeName,
                             arguments: ScreenArgumentsLoan(args.id));
                       },
-                      child: Image.asset(
-                        'assets/images/loans.png',
-                        fit: BoxFit.cover,
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/loan.png',
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            'หนี้เงินกู้',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
                     ),
                   ),
@@ -157,9 +180,20 @@ class Homekpts extends StatelessWidget {
                           }),
                         );
                       },
-                      child: Image.asset(
-                        'assets/images/average.png',
-                        fit: BoxFit.cover,
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            'assets/images/average.png',
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                            'ปันผล-เฉลี่ยคืน',
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.black87,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
                       ),
                     ),
                   ),
