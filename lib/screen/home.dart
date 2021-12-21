@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/loanInfo.dart';
+
 import 'memberlogin.dart';
 import 'settings.dart';
 import 'savingInfo.dart';
@@ -26,11 +27,22 @@ class ScreenArgumentsSaving {
   ScreenArgumentsSaving(this.id, this.sumAmount);
 }
 
+class ScreenArgumentsDividend {
+  final String id;
+
+  ScreenArgumentsDividend(this.id);
+}
+
 class ScreenArgumentsLoan {
   final String id;
   ScreenArgumentsLoan(
     this.id,
   );
+}
+
+class ScreenArgumentsLoanData {
+  final String id;
+  ScreenArgumentsLoanData(this.id);
 }
 
 class Homekpts extends StatelessWidget {
@@ -173,12 +185,8 @@ class Homekpts extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 40),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return Dividendkpt();
-                          }),
-                        );
+                        Navigator.pushNamed(context, Dividendkpt.routeName,
+                            arguments: ScreenArgumentsDividend(args.id));
                       },
                       child: Column(
                         children: [

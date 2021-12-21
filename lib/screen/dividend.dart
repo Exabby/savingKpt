@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Dividendkpt extends StatefulWidget {
   const Dividendkpt({Key? key}) : super(key: key);
 
+  static const routeName = '/Dividend';
   @override
   _DividendkptState createState() => _DividendkptState();
 }

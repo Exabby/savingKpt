@@ -77,7 +77,7 @@ class _loankptState extends State<loankpts> {
                               height: 100.0,
                             ),
                             Text(
-                              'หนี้เงินกู้',
+                              'ข้อมูลเงินกู้',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black,
@@ -118,7 +118,7 @@ class _loankptState extends State<loankpts> {
                         color: Colors.red,
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
@@ -134,44 +134,27 @@ class _loankptState extends State<loankpts> {
                           ),
                           Expanded(
                             child: Center(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 10.0, left: 20.0, bottom: 10.0),
-                                    child: Text(
-                                      'เงินต้น',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                              child: Text(
+                                'เงินต้น',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 10.0,
-                                    left: 20.0,
-                                    right: 30,
-                                    bottom: 10.0),
-                                child: Text(
-                                  'ดอกเบี้ย',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10.0, right: 10.0, bottom: 10.0),
+                            child: Text(
+                              'ดอกเบี้ย',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
                               ),
-                            ],
+                            ),
                           ),
                         ],
                       ),
@@ -211,7 +194,7 @@ class _loankptState extends State<loankpts> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    myModel.lamount,
+                                    myModel.lDall,
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,
@@ -232,7 +215,7 @@ class _loankptState extends State<loankpts> {
                                         padding:
                                             const EdgeInsets.only(right: 8.0),
                                         child: Text(
-                                          "0",
+                                          myModel.lDinterest,
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.black,

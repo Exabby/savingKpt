@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
         passwordkpt.routeName: (context) => const passwordkpt(),
         editPhone.routeName: (context) => const editPhone(),
         loankpts.routeName: (context) => const loankpts(),
+        Dividendkpt.routeName: (context) => const Dividendkpt(),
       },
     );
   }

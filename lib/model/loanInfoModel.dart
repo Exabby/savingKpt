@@ -26,6 +26,17 @@ class LoanInfoModel {
     required this.lstatus,
     required this.memId,
     required this.lRemark,
+    required this.lDid,
+    required this.lDyear,
+    required this.lDamount,
+    required this.lDall,
+    required this.lDrate,
+    required this.lDinterest,
+    required this.ldtotal,
+    required this.lDbalance,
+    required this.lddate,
+    required this.lDstatus,
+    required this.pId,
   });
 
   String lid;
@@ -41,6 +52,17 @@ class LoanInfoModel {
   String lstatus;
   String memId;
   String lRemark;
+  String lDid;
+  String lDyear;
+  String lDamount;
+  String lDall;
+  String lDrate;
+  String lDinterest;
+  String ldtotal;
+  String lDbalance;
+  String lddate;
+  String lDstatus;
+  String pId;
 
   factory LoanInfoModel.fromJson(Map<String, dynamic> json) => LoanInfoModel(
         lid: json["Lid"],
@@ -56,6 +78,17 @@ class LoanInfoModel {
         lstatus: json["Lstatus"],
         memId: json["memID"],
         lRemark: json["lRemark"],
+        lDid: json["LDid"],
+        lDyear: json["LDyear"],
+        lDamount: json["LDamount"],
+        lDall: json["LDall"],
+        lDrate: json["LDrate"],
+        lDinterest: json["LDinterest"],
+        ldtotal: json["Ldtotal"],
+        lDbalance: json["LDbalance"],
+        lddate: json["Lddate"],
+        lDstatus: json["LDstatus"],
+        pId: json["pID"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -72,5 +105,16 @@ class LoanInfoModel {
         "Lstatus": lstatus,
         "memID": memId,
         "lRemark": lRemark,
+        "LDid": lDid,
+        "LDyear": lDyear,
+        "LDamount": lDamount,
+        "LDall": lDall,
+        "LDrate": lDrate,
+        "LDinterest": lDinterest,
+        "Ldtotal": ldtotal,
+        "LDbalance": lDbalance,
+        "Lddate": lddate,
+        "LDstatus": lDstatus,
+        "pID": pId,
       };
 }
