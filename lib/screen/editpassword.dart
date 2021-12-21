@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'ifmt.dart';
@@ -19,6 +20,10 @@ class _passwordkptState extends State<passwordkpt> {
   TextEditingController NewPassword = TextEditingController();
   TextEditingController ConfirmPassword = TextEditingController();
 
+  String generateMd5(String input) {
+    return md5.convert(utf8.encode(input)).toString();
+  }
+
   Future changePassword(id) async {
     if (NewPassword.text == ConfirmPassword.text) {
       var _url = Uri.parse('https://save.kpt.ac.th/changePasswordApi.php');
@@ -28,15 +33,30 @@ class _passwordkptState extends State<passwordkpt> {
           "newPass": NewPassword.text,
           "id": id,
         });
+        var data = json.decode(response.body);
+        data = data["affectedRow"].toString();
+        print("ผลลัพ   : " + data);
+        if (data == "0") {
+          Fluttertoast.showToast(
+              msg: "กรุณาใส่รหัสผ่านให้ถูกต้อง",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0);
+        } else if (data == "1") {
+          Fluttertoast.showToast(
+              msg: "เปลี่ยนรหัสผ่านสำเร็จ",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              fontSize: 16.0);
+          Navigator.pop(context);
+        }
       }
-      Fluttertoast.showToast(
-          msg: "เปลี่ยนรหัสผ่านสำเร็จ",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0);
     } else if (NewPassword.text != ConfirmPassword.text) {
       Fluttertoast.showToast(
           msg: "รหัสผ่านใหม่ไม่ตรงกัน",
@@ -56,8 +76,6 @@ class _passwordkptState extends State<passwordkpt> {
           textColor: Colors.white,
           fontSize: 16.0);
     }
-
-    Navigator.pop(context);
   }
 
   static const routeName = '/editpass';
@@ -142,7 +160,22 @@ class _passwordkptState extends State<passwordkpt> {
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                   color: Color(0xFF1A237E),
-                  onPressed: () => changePassword(args.nationalId)),
+                  onPressed: () {
+                    if (generateMd5(NewPassword.text) == args.password) {
+                      Fluttertoast.showToast(
+                          msg:
+                              "รหัสผ่านใหม่และรหัสผ่านเก่าไม่สามารถเหมือนกันได้",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          webPosition: "left",
+                          fontSize: 16.0);
+                    } else {
+                      changePassword(args.nationalId);
+                    }
+                  }),
             ],
           )),
     );
