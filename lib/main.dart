@@ -5,7 +5,7 @@ import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/editPhone.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/ifmt.dart';
-import 'package:kptsave/screen/loan.dart';
+import 'package:kptsave/screen/loanInfo.dart';
 import 'package:kptsave/screen/memberlogin.dart';
 import 'package:kptsave/screen/settings.dart';
 import 'screen/home.dart';
