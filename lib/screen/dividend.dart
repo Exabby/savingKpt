@@ -46,7 +46,7 @@ class _DividendkptState extends State<Dividendkpt> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Text(
-                    'xxx',
+                    'ประจำปี',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -57,7 +57,7 @@ class _DividendkptState extends State<Dividendkpt> {
                 Padding(
                   padding: const EdgeInsets.all(10),
                   child: Text(
-                    'xxxx',
+                    'ปันผล',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -68,7 +68,7 @@ class _DividendkptState extends State<Dividendkpt> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Text(
-                    'xxxx',
+                    'เฉลี่ยคืน',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
@@ -79,7 +79,7 @@ class _DividendkptState extends State<Dividendkpt> {
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Text(
-                    'xxxx',
+                    'จำนวนเงิน',
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.white,
