@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'home.dart';
@@ -73,6 +74,15 @@ class _MemberLoginState extends State<MemberLogin> {
                 data['phone'],
                 data['address'],
                 data['sumAmount']));
+      } else if (data['status'] == 'No') {
+        Fluttertoast.showToast(
+            msg: "รหัสผ่านหรือชื่อผู้ใช้ผิด กรุณาลองใหม่อีกครั้ง",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.red,
+            textColor: Colors.white,
+            fontSize: 16.0);
       }
     }
   }

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/dividend.dart';
-import 'package:kptsave/screen/loan.dart';
+import 'package:kptsave/screen/loanInfo.dart';
 import 'memberlogin.dart';
 import 'settings.dart';
 import 'savingInfo.dart';
