@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: Dividendkpt(),
+      home: MemberLogin(),
       routes: {
         Homekpts.routeName: (context) => const Homekpts(),
         SavingInfo.routeName: (context) => const SavingInfo(),

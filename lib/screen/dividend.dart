@@ -27,7 +27,7 @@ class _DividendkptState extends State<Dividendkpt> {
                     height: 100.0,
                   ),
                   Text(
-                    'ปันผลเฉลี่ยคืน',
+                    'ปันผล - เฉลี่ยคืน',
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -38,12 +38,13 @@ class _DividendkptState extends State<Dividendkpt> {
             ),
           ),
           Container(
+            alignment: FractionalOffset.center,
             decoration: BoxDecoration(color: Colors.red),
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                      top: 10.0, left: 20.0, bottom: 10.0),
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                   child: Text(
                     'xxx',
                     style: TextStyle(
@@ -53,127 +54,123 @@ class _DividendkptState extends State<Dividendkpt> {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 20.0, bottom: 10.0),
-                      child: Text(
-                        'xxxx',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Text(
+                    'xxxx',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 20.0, bottom: 10.0),
-                      child: Text(
-                        'xxxx',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Text(
+                    'xxxx',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 20.0, bottom: 10.0),
-                      child: Text(
-                        'xxxx',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
+                  child: Text(
+                    'xxxx',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 40.0),
-                      child: Text(
-                        '0000',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: Text(
+                          '0000',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
-                    ),
-                    Divider(
-                      thickness: 1,
-                      color: Colors.black12,
-                    )
-                  ],
+                      Divider(
+                        thickness: 1,
+                        color: Colors.black12,
+                      )
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '00000000',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          '00000',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Divider(thickness: 1, color: Colors.black12)
+                      ],
                     ),
-                    Divider(thickness: 1, color: Colors.black12)
-                  ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '00000000',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          '00000',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Divider(thickness: 1, color: Colors.black12)
+                      ],
                     ),
-                    Divider(thickness: 1, color: Colors.black12)
-                  ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '00000000',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          '00000',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Divider(thickness: 1, color: Colors.black12)
+                      ],
                     ),
-                    Divider(thickness: 1, color: Colors.black12)
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           )
         ],
       ),

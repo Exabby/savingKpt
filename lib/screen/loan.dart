@@ -58,29 +58,33 @@ class _loankptState extends State<loankpts> {
                     ),
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 20.0, bottom: 10.0),
-                      child: Text(
-                        'วันที่',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              top: 10.0, left: 20.0, bottom: 10.0),
+                          child: Text(
+                            'วันที่',
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(
-                          top: 10.0, left: 20.0, bottom: 10.0),
+                          top: 10.0, left: 20.0, right: 20, bottom: 10.0),
                       child: Text(
                         'จำนวนเงิน',
                         style: TextStyle(
@@ -117,18 +121,21 @@ class _loankptState extends State<loankpts> {
                 ),
               ),
               Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      '00000000',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        '00000000',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Divider(thickness: 1, color: Colors.black12)
-                  ],
+                      Divider(thickness: 1, color: Colors.black12)
+                    ],
+                  ),
                 ),
               ),
               Expanded(
@@ -138,7 +145,7 @@ class _loankptState extends State<loankpts> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 8.0),
+                          padding: const EdgeInsets.only(right: 30.0),
                           child: Text(
                             '00000',
                             style: TextStyle(

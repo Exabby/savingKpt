@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/loan.dart';
 import 'memberlogin.dart';
 import 'settings.dart';
@@ -119,7 +120,7 @@ class Homekpts extends StatelessWidget {
                               ScreenArgumentsSaving(args.id, args.sumAmount));
                     },
                     child: Image.asset(
-                      'assets/images/saving_icon.jpg',
+                      'assets/images/savingNew.png',
                       width: 100,
                       height: 100,
                       fit: BoxFit.cover,
@@ -128,9 +129,16 @@ class Homekpts extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return loankpts();
+                          }),
+                        );
+                      },
                       child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
+                        'assets/images/loans.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -138,79 +146,22 @@ class Homekpts extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 40),
                     child: GestureDetector(
-                      onTap: null,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return Dividendkpt();
+                          }),
+                        );
+                      },
                       child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
+                        'assets/images/average.png',
                         fit: BoxFit.cover,
                       ),
                     ),
                   ),
                 ]),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 50, left: 10),
-                child: Row(children: [
-                  GestureDetector(
-                    onTap: null,
-                    child: Image.asset(
-                      'assets/images/ข้อมูลออมทรัพย์.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: null,
-                      child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: null,
-                      child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ]),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 50, left: 10),
-                child: Row(children: [
-                  GestureDetector(
-                    onTap: null,
-                    child: Image.asset(
-                      'assets/images/ข้อมูลออมทรัพย์.png',
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: null,
-                      child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: null,
-                      child: Image.asset(
-                        'assets/images/ข้อมูลออมทรัพย์.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ]),
-              )
             ],
           ),
         )
