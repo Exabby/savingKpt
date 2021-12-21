@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:kptsave/screen/memberlogin.dart';
 import 'ifmt.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,7 +25,7 @@ class _passwordkptState extends State<passwordkpt> {
     return md5.convert(utf8.encode(input)).toString();
   }
 
-  Future changePassword(id) async {
+  Future changePassword(id, password) async {
     if (NewPassword.text == ConfirmPassword.text) {
       var _url = Uri.parse('https://save.kpt.ac.th/changePasswordApi.php');
       if (_formKey.currentState!.validate()) {
@@ -35,8 +36,12 @@ class _passwordkptState extends State<passwordkpt> {
         });
         var data = json.decode(response.body);
         data = data["affectedRow"].toString();
-        print("ผลลัพ   : " + data);
-        if (data == "0") {
+        print("ผลลัพธ์   : " +
+            generateMd5(OldPassword.text) +
+            "  และ : " +
+            generateMd5(OldPassword.text));
+
+        if (generateMd5(OldPassword.text) != password) {
           Fluttertoast.showToast(
               msg: "กรุณาใส่รหัสผ่านให้ถูกต้อง",
               toastLength: Toast.LENGTH_SHORT,
@@ -45,16 +50,29 @@ class _passwordkptState extends State<passwordkpt> {
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
+        } else if (generateMd5(NewPassword.text) == password) {
+          Fluttertoast.showToast(
+              msg: "รหัสผ่านใหม่และรหัสผ่านเก่าไม่สามารถเหมือนกันได้",
+              toastLength: Toast.LENGTH_SHORT,
+              gravity: ToastGravity.CENTER,
+              timeInSecForIosWeb: 1,
+              backgroundColor: Colors.red,
+              textColor: Colors.white,
+              webPosition: "left",
+              fontSize: 16.0);
         } else if (data == "1") {
           Fluttertoast.showToast(
-              msg: "เปลี่ยนรหัสผ่านสำเร็จ",
+              msg: "เปลี่ยนรหัสผ่านสำเร็จ กรุณาเข้าสู่ระบบใหม่อีกครั้ง",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.CENTER,
               timeInSecForIosWeb: 1,
               backgroundColor: Colors.red,
               textColor: Colors.white,
               fontSize: 16.0);
-          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MemberLogin()),
+          );
         }
       }
     } else if (NewPassword.text != ConfirmPassword.text) {
@@ -161,20 +179,7 @@ class _passwordkptState extends State<passwordkpt> {
                   ),
                   color: Color(0xFF1A237E),
                   onPressed: () {
-                    if (generateMd5(NewPassword.text) == args.password) {
-                      Fluttertoast.showToast(
-                          msg:
-                              "รหัสผ่านใหม่และรหัสผ่านเก่าไม่สามารถเหมือนกันได้",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.CENTER,
-                          timeInSecForIosWeb: 1,
-                          backgroundColor: Colors.red,
-                          textColor: Colors.white,
-                          webPosition: "left",
-                          fontSize: 16.0);
-                    } else {
-                      changePassword(args.nationalId);
-                    }
+                    changePassword(args.nationalId, args.password);
                   }),
             ],
           )),

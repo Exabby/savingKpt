@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         informationkpt.routeName: (context) => const informationkpt(),
         passwordkpt.routeName: (context) => const passwordkpt(),
         editPhone.routeName: (context) => const editPhone(),
+        loankpts.routeName: (context) => const loankpts(),
       },
     );
   }

@@ -82,6 +82,7 @@ class _MemberLoginState extends State<MemberLogin> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("เข้าสู่ระบบ"),
+        automaticallyImplyLeading: false,
       ),
       body: Form(
         key: _formKey,

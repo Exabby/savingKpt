@@ -25,6 +25,13 @@ class ScreenArgumentsSaving {
   ScreenArgumentsSaving(this.id, this.sumAmount);
 }
 
+class ScreenArgumentsLoan {
+  final String id;
+  ScreenArgumentsLoan(
+    this.id,
+  );
+}
+
 class Homekpts extends StatelessWidget {
   const Homekpts({Key? key}) : super(key: key);
 
@@ -130,12 +137,8 @@ class Homekpts extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 40),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) {
-                            return loankpts();
-                          }),
-                        );
+                        Navigator.pushNamed(context, loankpts.routeName,
+                            arguments: ScreenArgumentsLoan(args.id));
                       },
                       child: Image.asset(
                         'assets/images/loans.png',

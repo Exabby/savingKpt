@@ -4,7 +4,7 @@ import 'package:flutter/painting.dart';
 
 class loankpts extends StatefulWidget {
   const loankpts({Key? key}) : super(key: key);
-
+  static const routeName = '/loaninfo';
   @override
   _loankptState createState() => _loankptState();
 }
