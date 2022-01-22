@@ -11,9 +11,23 @@ class _aboutphoneState extends State<aboutphone> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('เกี่ยวกับ'),
-      ),
-    );
+        appBar: AppBar(
+          title: const Text('เกี่ยวกับ'),
+        ),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 255, 253, 228),
+                  Color.fromARGB(255, 0, 90, 167),
+                ],
+              )),
+            ),
+          ],
+        ));
   }
 }

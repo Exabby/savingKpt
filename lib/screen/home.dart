@@ -131,81 +131,77 @@ class Homekpts extends StatelessWidget {
               ),
               Divider(endIndent: 10, thickness: 3, color: Colors.black),
               Padding(
-                padding: const EdgeInsets.only(top: 50, left: 10),
-                child: Row(children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, SavingInfo.routeName,
-                          arguments:
-                              ScreenArgumentsSaving(args.id, args.sumAmount));
-                    },
-                    child: Column(
-                      children: [
-                        Image.asset(
-                          'assets/images/savingNew.png',
-                          width: 100,
-                          height: 100,
-                          fit: BoxFit.cover,
+                padding: const EdgeInsets.only(top: 15.0),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, SavingInfo.routeName,
+                              arguments: ScreenArgumentsSaving(
+                                  args.id, args.sumAmount));
+                        },
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/savingNew.png',
+                              width: 100,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              'ทุนเรือนหุ้น',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
                         ),
-                        Text(
-                          'ทุนเรือนหุ้น',
-                          style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.bold),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, loankpts.routeName,
-                            arguments: ScreenArgumentsLoan(args.id));
-                      },
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/loan.png',
-                            fit: BoxFit.cover,
-                          ),
-                          Text(
-                            'หนี้เงินกู้',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.pushNamed(context, Dividendkpt.routeName,
-                            arguments: ScreenArgumentsDividend(args.id));
-                      },
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            'assets/images/average.png',
-                            fit: BoxFit.cover,
-                          ),
-                          Text(
-                            'ปันผล-เฉลี่ยคืน',
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.black87,
-                                fontWeight: FontWeight.bold),
-                          )
-                        ],
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, loankpts.routeName,
+                              arguments: ScreenArgumentsLoan(args.id));
+                        },
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/loan.png',
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              'หนี้เงินกู้',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
                       ),
-                    ),
-                  ),
-                ]),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Dividendkpt.routeName,
+                              arguments: ScreenArgumentsDividend(args.id));
+                        },
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/images/average.png',
+                              fit: BoxFit.cover,
+                            ),
+                            Text(
+                              'ปันผล-เฉลี่ยคืน',
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.black87,
+                                  fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ]),
               ),
             ],
           ),

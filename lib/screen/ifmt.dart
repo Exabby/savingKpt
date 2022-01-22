@@ -19,6 +19,12 @@ class ScreenArgumentsEditPhone {
   ScreenArgumentsEditPhone(this.phone, this.nationalId);
 }
 
+class ScreenArgumentsAddress {
+  final String address;
+  final String nationalId;
+  ScreenArgumentsAddress(this.address, this.nationalId);
+}
+
 class informationkpt extends StatefulWidget {
   const informationkpt({Key? key}) : super(key: key);
   static const routeName = '/infomation';
@@ -36,60 +42,77 @@ class _infomationkptState extends State<informationkpt> {
       appBar: AppBar(
         title: const Text('ข้อมูลส่วนตัว'),
       ),
-      body: ListView(
+      body: Stack(
         children: [
-          ListTile(
-            title: Text('ชื่อ-สกุล'),
-            subtitle: Text(args.fullname),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-                side: BorderSide(color: Colors.black)),
+          Container(
+            decoration: BoxDecoration(
+                gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 255, 253, 228),
+                Color.fromARGB(255, 0, 90, 167),
+              ],
+            )),
           ),
-          ListTile(
-            title: Text('ชื่อผู้ใช้งาน'),
-            subtitle: Text(args.nationalId),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-                side: BorderSide(color: Colors.black)),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.pushNamed(context, passwordkpt.routeName,
-                  arguments: ScreenArgumentsEditPass(args.password,
-                      args.nationalId, args.phone, args.address));
-            },
-            title: Text('รหัสผ่าน'),
-            subtitle: Text('แก้ใขรหัสผ่าน'),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-                side: BorderSide(color: Colors.black)),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.pushNamed(context, editPhone.routeName,
-                  arguments:
-                      ScreenArgumentsEditPhone(args.phone, args.nationalId));
-            },
-            title: Text('เบอร์โทรศัพท์'),
-            subtitle: Text(args.phone),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-                side: BorderSide(color: Colors.black)),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return editaddresskpt();
-                }),
-              );
-            },
-            title: Text('ที่อยู่'),
-            subtitle: Text(args.address),
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(0.0),
-                side: BorderSide(color: Colors.black)),
+          ListView(
+            children: [
+              ListTile(
+                title: Text('ชื่อ-สกุล'),
+                subtitle: Text(args.fullname),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+              ),
+              Divider(thickness: 1, color: Colors.black12),
+              ListTile(
+                title: Text('ชื่อผู้ใช้งาน'),
+                subtitle: Text(args.nationalId),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+              ),
+              Divider(thickness: 1, color: Colors.black12),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, passwordkpt.routeName,
+                      arguments: ScreenArgumentsEditPass(args.password,
+                          args.nationalId, args.phone, args.address));
+                },
+                title: Text('รหัสผ่าน'),
+                subtitle: Text('แก้ใขรหัสผ่าน'),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+              ),
+              Divider(thickness: 1, color: Colors.black12),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, editPhone.routeName,
+                      arguments: ScreenArgumentsEditPhone(
+                          args.phone, args.nationalId));
+                },
+                title: Text('เบอร์โทรศัพท์'),
+                subtitle: Text(args.phone),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+              ),
+              Divider(thickness: 1, color: Colors.black12),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, editaddresskpt.routeName,
+                      arguments: ScreenArgumentsAddress(
+                          args.address, args.nationalId));
+                },
+                title: Text('ที่อยู่'),
+                subtitle: Text(args.address),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                    side: BorderSide(color: Colors.black)),
+              ),
+              Divider(thickness: 1, color: Colors.black12),
+            ],
           ),
         ],
       ),

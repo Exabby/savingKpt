@@ -32,27 +32,46 @@ class _settingskptState extends State<settingskpt> {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text("settings"),
+          title: const Text("ตั้งค่า"),
         ),
-        body: ListView(children: <Widget>[
-          ListTile(
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (contrxt) {
-                return aboutphone();
-              }));
-            },
-            leading: Icon(Icons.tablet_android_rounded),
-            title: Text('เกี่ยวกับ'),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.pushNamed(context, informationkpt.routeName,
-                  arguments: ScreenArgumentsInfo(args.password, args.nationalId,
-                      args.phone, args.address, args.fullname));
-            },
-            leading: Icon(Icons.account_circle_rounded),
-            title: Text('ข้อมูลส่วนตัว'),
-          )
-        ]));
+        body: Stack(
+          children: <Widget>[
+            Container(
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 255, 253, 228),
+                  Color.fromARGB(255, 0, 90, 167),
+                ],
+              )),
+            ),
+            ListView(children: <Widget>[
+              ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (contrxt) {
+                    return aboutphone();
+                  }));
+                },
+                leading: Icon(Icons.tablet_android_rounded),
+                title: Text('เกี่ยวกับ'),
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.pushNamed(context, informationkpt.routeName,
+                      arguments: ScreenArgumentsInfo(
+                          args.password,
+                          args.nationalId,
+                          args.phone,
+                          args.address,
+                          args.fullname));
+                },
+                leading: Icon(Icons.account_circle_rounded),
+                title: Text('ข้อมูลส่วนตัว'),
+              )
+            ])
+          ],
+        ));
   }
 }

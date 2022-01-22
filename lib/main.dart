@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:kptsave/screen/dividend.dart';
 import 'package:kptsave/screen/editPhone.dart';
+import 'package:kptsave/screen/editaddress.dart';
 import 'package:kptsave/screen/editpassword.dart';
 import 'package:kptsave/screen/ifmt.dart';
 import 'package:kptsave/screen/loanInfo.dart';
@@ -45,6 +46,7 @@ class MyApp extends StatelessWidget {
         editPhone.routeName: (context) => const editPhone(),
         loankpts.routeName: (context) => const loankpts(),
         Dividendkpt.routeName: (context) => const Dividendkpt(),
+        editaddresskpt.routeName: (context) => const editaddresskpt(),
       },
     );
   }

@@ -104,85 +104,99 @@ class _passwordkptState extends State<passwordkpt> {
     final String id = args.nationalId;
     final String password = args.password;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('แก้ไขรหัสผ่าน'),
       ),
-      body: Form(
-          key: _formKey,
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  controller: OldPassword,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                      fillColor: Colors.white70,
-                      filled: true,
-                      labelText: 'รหัสผ่านเก่า',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  controller: NewPassword,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                      fillColor: Colors.white70,
-                      filled: true,
-                      labelText: 'รหัสผ่านใหม่',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextFormField(
-                  controller: ConfirmPassword,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'โปรดใส่ข้อมูลให้ครบถ้วน';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(
-                      fillColor: Colors.white70,
-                      filled: true,
-                      labelText: 'ยืนยันรหัสผ่าน',
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(5.0))),
-                ),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              MaterialButton(
-                  height: 58,
-                  minWidth: 380,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(10)),
-                  child: Text(
-                    'ยืนยัน',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                  color: Color(0xFF1A237E),
-                  onPressed: () {
-                    changePassword(args.nationalId, args.password);
-                  }),
+      body: Stack(children: <Widget>[
+        Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromARGB(255, 255, 253, 228),
+              Color.fromARGB(255, 0, 90, 167),
             ],
           )),
+        ),
+        Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: OldPassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        fillColor: Colors.white70,
+                        filled: true,
+                        labelText: 'รหัสผ่านเก่า',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: NewPassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        fillColor: Colors.white70,
+                        filled: true,
+                        labelText: 'รหัสผ่านใหม่',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextFormField(
+                    controller: ConfirmPassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'โปรดใส่ข้อมูลให้ครบถ้วน';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        fillColor: Colors.white70,
+                        filled: true,
+                        labelText: 'ยืนยันรหัสผ่าน',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                MaterialButton(
+                    height: 58,
+                    minWidth: 380,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10)),
+                    child: Text(
+                      'ยืนยัน',
+                      style: TextStyle(fontSize: 18, color: Colors.white),
+                    ),
+                    color: Color(0xFF1A237E),
+                    onPressed: () {
+                      changePassword(args.nationalId, args.password);
+                    }),
+              ],
+            )),
+      ]),
     );
   }
 }

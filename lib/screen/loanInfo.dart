@@ -64,6 +64,12 @@ class _loankptState extends State<loankpts> {
                 final lremaining = myModel.lremaining.replaceAllMapped(
                     RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                     (Match m) => '${m[1]},');
+                final lDall = myModel.lDall.replaceAllMapped(
+                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                    (Match m) => '${m[1]},');
+                final lDinterest = myModel.lDinterest.replaceAllMapped(
+                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                    (Match m) => '${m[1]},');
                 return Column(
                   children: [
                     Container(
@@ -194,7 +200,7 @@ class _loankptState extends State<loankpts> {
                               child: Column(
                                 children: <Widget>[
                                   Text(
-                                    myModel.lDall,
+                                    lDall,
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,
@@ -215,7 +221,7 @@ class _loankptState extends State<loankpts> {
                                         padding:
                                             const EdgeInsets.only(right: 8.0),
                                         child: Text(
-                                          myModel.lDinterest,
+                                          lDinterest,
                                           style: TextStyle(
                                             fontSize: 16,
                                             color: Colors.black,
