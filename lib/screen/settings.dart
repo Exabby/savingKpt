@@ -3,6 +3,7 @@ import 'package:kptsave/screen/about.dart';
 import 'package:kptsave/screen/ifmt.dart';
 
 import 'home.dart';
+import 'memberlogin.dart';
 
 class ScreenArgumentsInfo {
   final String password;
@@ -69,7 +70,16 @@ class _settingskptState extends State<settingskpt> {
                 },
                 leading: Icon(Icons.account_circle_rounded),
                 title: Text('ข้อมูลส่วนตัว'),
-              )
+              ),
+              ListTile(
+                onTap: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (contrxt) {
+                    return MemberLogin();
+                  }));
+                },
+                leading: Icon(Icons.logout_outlined),
+                title: Text('ออกจากระบบ'),
+              ),
             ])
           ],
         ));

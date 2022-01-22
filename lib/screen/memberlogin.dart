@@ -89,66 +89,69 @@ class _MemberLoginState extends State<MemberLogin> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        title: const Text("เข้าสู่ระบบ"),
-        automaticallyImplyLeading: false,
-      ),
-      body: Form(
-        key: _formKey,
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: _ctrlUsername,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please Enter Username';
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                    fillColor: Colors.white70,
-                    filled: true,
-                    labelText: 'ชื่อผู้เข้าใช้',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
-              ),
+    return new WillPopScope(
+        onWillPop: () async => false,
+        child: Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: AppBar(
+            title: const Text("เข้าสู่ระบบ"),
+            automaticallyImplyLeading: false,
+          ),
+          body: Form(
+            key: _formKey,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextFormField(
+                    controller: _ctrlUsername,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Username';
+                      }
+                      return null;
+                    },
+                    decoration: InputDecoration(
+                        fillColor: Colors.white70,
+                        filled: true,
+                        labelText: 'ชื่อผู้เข้าใช้',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextFormField(
+                    controller: _ctrlPassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please Enter Password';
+                      }
+                      return null;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        fillColor: Colors.white70,
+                        filled: true,
+                        labelText: 'รหัสผ่าน',
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0))),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: ElevatedButton(
+                              onPressed: () => doLogin(),
+                              child: Text('Login'))),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: _ctrlPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please Enter Password';
-                  }
-                  return null;
-                },
-                obscureText: true,
-                decoration: InputDecoration(
-                    fillColor: Colors.white70,
-                    filled: true,
-                    labelText: 'รหัสผ่าน',
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(5.0))),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                      child: ElevatedButton(
-                          onPressed: () => doLogin(), child: Text('Login'))),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
