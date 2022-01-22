@@ -78,17 +78,17 @@ class SavingInfo extends StatelessWidget {
                                 Column(
                                   children: [
                                     Text(
-                                      args.sumAmount.replaceAllMapped(
-                                          RegExp(
-                                              r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                          (Match m) => '${m[1]},'),
+                                      'ทุนเรือนหุ้นสะสม ',
                                       style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     ),
                                     Text(
-                                      'ทุนเรือนหุ้นสะสม ',
+                                      args.sumAmount.replaceAllMapped(
+                                          RegExp(
+                                              r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                          (Match m) => '${m[1]},'),
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.black,

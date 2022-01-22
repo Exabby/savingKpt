@@ -1,4 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import '../model/dividendModel.dart';
+import 'home.dart';
 
 class Dividendkpt extends StatefulWidget {
   const Dividendkpt({Key? key}) : super(key: key);
@@ -8,9 +14,27 @@ class Dividendkpt extends StatefulWidget {
   _DividendkptState createState() => _DividendkptState();
 }
 
+Future<List<DividendInfoModel>> getDividendInfoApi(id) async {
+  var _url = Uri.parse('https://save.kpt.ac.th/dividendGetApi.php');
+  var response = await http.post(_url, body: {
+    "id": id,
+  });
+
+  var data = json.decode(response.body);
+  var members = <DividendInfoModel>[];
+
+  for (var x in data) {
+    members.add(DividendInfoModel.fromJson(x));
+  }
+  return members;
+}
+
 class _DividendkptState extends State<Dividendkpt> {
   @override
   Widget build(BuildContext context) {
+    final args =
+        ModalRoute.of(context)!.settings.arguments as ScreenArgumentsDividend;
+    getDividendInfoApi(args.id);
     return Scaffold(
       appBar: AppBar(
         title: const Text('ปันผลเฉลี่ย'),
@@ -92,7 +116,7 @@ class _DividendkptState extends State<Dividendkpt> {
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
                     child: Text(
-                      'จำนวนเงิน',
+                      'รวมทั้งหมด',
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.white,
@@ -103,88 +127,127 @@ class _DividendkptState extends State<Dividendkpt> {
                 ],
               ),
             ),
+            Divider(
+                indent: 10,
+                endIndent: 10,
+                color: Color.fromARGB(31, 255, 251, 251)),
             Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0),
-                          child: Text(
-                            '0000',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          thickness: 1,
-                          color: Colors.black12,
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '00000',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 1, color: Colors.black12)
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '00000',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 1, color: Colors.black12)
-                        ],
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            '00000',
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Divider(thickness: 1, color: Colors.black12)
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            )
+                child: FutureBuilder(
+                    future: getDividendInfoApi(args.id),
+                    builder: (context, data) {
+                      if (data.hasError) {
+                        return Center(child: Text("${data.error}"));
+                      } else if (data.hasData) {
+                        var items = data.data as List<DividendInfoModel>;
+
+                        return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemExtent: 50,
+                          shrinkWrap: true,
+                          itemCount: items.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            DividendInfoModel myModel = items[index];
+                            final t = int.parse(myModel.divLoantotal) +
+                                int.parse(myModel.divSavingtotal);
+                            final tt = t.toString();
+                            final total = tt.replaceAllMapped(
+                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                (Match m) => '${m[1]},');
+                            final divSavingtotal = myModel.divSavingtotal
+                                .replaceAllMapped(
+                                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                    (Match m) => '${m[1]},');
+                            final divLoantotal = myModel.divLoantotal
+                                .replaceAllMapped(
+                                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                    (Match m) => '${m[1]},');
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        myModel.divDate,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        divSavingtotal,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        divLoantotal,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 8.0),
+                                            child: Text(
+                                              total,
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    })),
           ],
         ),
       ]),

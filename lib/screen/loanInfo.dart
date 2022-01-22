@@ -97,14 +97,14 @@ class _loankptState extends State<loankpts> {
                                   Column(
                                     children: [
                                       Text(
-                                        lremaining,
+                                        'ยอดคงเหลือ',
                                         style: TextStyle(
                                             fontSize: 18,
                                             color: Colors.black,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Text(
-                                        'ยอดคงเหลือ',
+                                        lremaining,
                                         style: TextStyle(
                                             fontSize: 20,
                                             color: Colors.black,
