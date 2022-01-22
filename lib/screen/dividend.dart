@@ -168,7 +168,7 @@ class _DividendkptState extends State<Dividendkpt> {
                                   child: Column(
                                     children: <Widget>[
                                       Text(
-                                        myModel.divDate,
+                                        myModel.divYear,
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.black,
