@@ -70,78 +70,68 @@ class _loankptState extends State<loankpts> {
                 final lDinterest = myModel.lDinterest.replaceAllMapped(
                     RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
                     (Match m) => '${m[1]},');
-                return Column(
-                  children: [
-                    Container(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "assets/images/_icon.png",
-                              width: 100.0,
-                              height: 100.0,
-                            ),
-                            Text(
-                              'ข้อมูลเงินกู้',
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      Text(
-                                        'ยอดคงเหลือ',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      Text(
-                                        lremaining,
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                "assets/images/_icon.png",
+                                width: 100.0,
+                                height: 100.0,
                               ),
-                            )
-                          ],
+                              Text(
+                                'ข้อมูลเงินกู้',
+                                style: TextStyle(
+                                    fontSize: 20,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 8.0, bottom: 8.0),
+                                child: Row(
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          'ยอดคงเหลือ',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        Text(
+                                          lremaining,
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10.0, left: 10.0, bottom: 10.0),
-                            child: Text(
-                              'วันที่ทำรายการ',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Center(
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10.0, left: 10.0, bottom: 10.0),
                               child: Text(
-                                'เงินต้น',
+                                'วันที่ทำรายการ',
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.white,
@@ -149,97 +139,113 @@ class _loankptState extends State<loankpts> {
                                 ),
                               ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 10.0, right: 10.0, bottom: 10.0),
-                            child: Text(
-                              'ดอกเบี้ย',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                            Expanded(
+                              child: Center(
+                                child: Text(
+                                  'เงินต้น',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  top: 10.0, right: 10.0, bottom: 10.0),
+                              child: Text(
+                                'ดอกเบี้ย',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    Divider(
-                        indent: 10,
-                        endIndent: 10,
-                        color: Color.fromARGB(31, 255, 251, 251)),
-                    ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemExtent: 50,
-                      shrinkWrap: true,
-                      itemCount: items.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 40.0),
-                                    child: Text(
-                                      myModel.lapproveDate,
+                      Divider(
+                          indent: 10,
+                          endIndent: 10,
+                          color: Color.fromARGB(31, 255, 251, 251)),
+                      ListView.builder(
+                        scrollDirection: Axis.vertical,
+                        itemExtent: 50,
+                        shrinkWrap: true,
+                        itemCount: items.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: <Widget>[
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 40.0),
+                                      child: Text(
+                                        myModel.lapproveDate,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                    Divider(
+                                        thickness: 1, color: Colors.black12),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  children: <Widget>[
+                                    Text(
+                                      lDall,
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
-                                  ),
-                                  Divider(thickness: 1, color: Colors.black12),
-                                ],
+                                    Divider(
+                                        thickness: 1, color: Colors.black12),
+                                  ],
+                                ),
                               ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  Text(
-                                    lDall,
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Divider(thickness: 1, color: Colors.black12),
-                                ],
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                children: <Widget>[
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 8.0),
-                                        child: Text(
-                                          lDinterest,
-                                          style: TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
+                              Expanded(
+                                child: Column(
+                                  children: <Widget>[
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(right: 8.0),
+                                          child: Text(
+                                            lDinterest,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                  Divider(thickness: 1, color: Colors.black12),
-                                ],
+                                      ],
+                                    ),
+                                    Divider(
+                                        thickness: 1, color: Colors.black12),
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
-                        );
-                      },
-                    )
-                  ],
+                            ],
+                          );
+                        },
+                      )
+                    ],
+                  ),
                 );
               } else {
                 return Center(
