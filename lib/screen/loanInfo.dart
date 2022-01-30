@@ -52,207 +52,227 @@ class _loankptState extends State<loankpts> {
             ],
           )),
         ),
-        FutureBuilder(
-            future: getLoanInfoApi(args.id),
-            builder: (context, data) {
-              if (data.hasError) {
-                return Center(child: Text("${data.error}"));
-              } else if (data.hasData) {
-                var items = data.data as List<LoanInfoModel>;
-                int index = 0;
-                LoanInfoModel myModel = items[index];
-                final lremaining = myModel.lremaining.replaceAllMapped(
-                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                    (Match m) => '${m[1]},');
-                final lDall = myModel.lDall.replaceAllMapped(
-                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                    (Match m) => '${m[1]},');
-                final lDinterest = myModel.lDinterest.replaceAllMapped(
-                    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                    (Match m) => '${m[1]},');
-                return SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        child: Padding(
+        Expanded(
+          child: Column(
+            children: [
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Expanded(
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          "assets/images/savingNew.png",
+                          width: 100.0,
+                          height: 100.0,
+                        ),
+                        Text(
+                          'ข้อมูลเงินกู้',
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Column(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/images/_icon.png",
-                                width: 100.0,
-                                height: 100.0,
-                              ),
-                              Text(
-                                'ข้อมูลเงินกู้',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 8.0, bottom: 8.0),
-                                child: Row(
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          'ยอดคงเหลือ',
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          lremaining,
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
+                              Column(
+                                children: [
+                                  Text(
+                                    'ยอดคงเหลือ ',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "test",
+                                    // args.sumAmount.replaceAllMapped(
+                                    //     RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                    //     (Match m) => '${m[1]},'),
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  ],
-                                ),
-                              )
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
                         ),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.red,
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, left: 10, bottom: 10.0),
+                        child: Text(
+                          'ประจำปี',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10.0, left: 10.0, bottom: 10.0),
-                              child: Text(
-                                'วันที่ทำรายการ',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Center(
-                                child: Text(
-                                  'เงินต้น',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
+                      ),
+                      Text(
+                        'เงินต้น',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'ดอกเบี้ย',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, right: 10, bottom: 10.0),
+                        child: Text(
+                          'รวม',
+                          style: TextStyle(
+                            fontSize: 16,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      )
+                    ]),
+              ),
+              Divider(
+                  indent: 10,
+                  endIndent: 10,
+                  color: Color.fromARGB(31, 255, 251, 251)),
+              Expanded(
+                child: FutureBuilder(
+                    future: getLoanInfoApi(args.id),
+                    builder: (context, data) {
+                      if (data.hasError) {
+                        return Center(child: Text("${data.error}"));
+                      } else if (data.hasData) {
+                        var items = data.data as List<LoanInfoModel>;
+
+                        return ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          itemExtent: 50,
+                          shrinkWrap: true,
+                          itemCount: items.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            LoanInfoModel myModel = items[index];
+                            final lDall = myModel.lDall.replaceAllMapped(
+                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                (Match m) => '${m[1]},');
+                            final t = int.parse(myModel.lDall) +
+                                int.parse(myModel.lDinterest);
+                            final tt = t.toString();
+                            final total = tt.replaceAllMapped(
+                                RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                (Match m) => '${m[1]},');
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          left: 10,
+                                        ),
+                                        child: Text(
+                                          myModel.lddate,
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
                                   ),
                                 ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  top: 10.0, right: 10.0, bottom: 10.0),
-                              child: Text(
-                                'ดอกเบี้ย',
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Divider(
-                          indent: 10,
-                          endIndent: 10,
-                          color: Color.fromARGB(31, 255, 251, 251)),
-                      ListView.builder(
-                        scrollDirection: Axis.vertical,
-                        itemExtent: 50,
-                        shrinkWrap: true,
-                        itemCount: items.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: <Widget>[
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 40.0),
-                                      child: Text(
-                                        myModel.lapproveDate,
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        lDall,
                                         style: TextStyle(
                                           fontSize: 16,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
-                                    ),
-                                    Divider(
-                                        thickness: 1, color: Colors.black12),
-                                  ],
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  children: <Widget>[
-                                    Text(
-                                      lDall,
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Divider(
-                                        thickness: 1, color: Colors.black12),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 8.0),
-                                          child: Text(
-                                            lDinterest,
-                                            style: TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        myModel.lDinterest,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
                                         ),
-                                      ],
-                                    ),
-                                    Divider(
-                                        thickness: 1, color: Colors.black12),
-                                  ],
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        },
-                      )
-                    ],
-                  ),
-                );
-              } else {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            }),
+                                Expanded(
+                                  child: Column(
+                                    children: <Widget>[
+                                      Text(
+                                        total,
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      Divider(
+                                          thickness: 1, color: Colors.black12),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                    }),
+              ),
+            ],
+          ),
+        ),
       ]),
     );
   }
