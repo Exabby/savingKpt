@@ -89,10 +89,9 @@ class _loankptState extends State<loankpts> {
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "test",
-                                    // args.sumAmount.replaceAllMapped(
-                                    //     RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
-                                    //     (Match m) => '${m[1]},'),
+                                    args.Lremaining.replaceAllMapped(
+                                        RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                        (Match m) => '${m[1]},'),
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.black,

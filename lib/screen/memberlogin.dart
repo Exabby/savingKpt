@@ -17,6 +17,7 @@ class ScreenArgumentsHome {
   final String phone;
   final String address;
   final String sumAmount;
+  final String Lremaining;
 
   ScreenArgumentsHome(
       this.title,
@@ -29,7 +30,8 @@ class ScreenArgumentsHome {
       this.password,
       this.phone,
       this.address,
-      this.sumAmount);
+      this.sumAmount,
+      this.Lremaining);
 }
 
 class MemberLogin extends StatefulWidget {
@@ -73,7 +75,8 @@ class _MemberLoginState extends State<MemberLogin> {
                 data['password'],
                 data['phone'],
                 data['address'],
-                data['sumAmount']));
+                data['sumAmount'],
+                data['Lremaining']));
       } else if (data['status'] == 'No') {
         Fluttertoast.showToast(
             msg: "รหัสผ่านหรือชื่อผู้ใช้ผิด กรุณาลองใหม่อีกครั้ง",
